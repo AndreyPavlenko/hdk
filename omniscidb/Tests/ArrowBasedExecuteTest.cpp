@@ -1351,8 +1351,8 @@ class ExecuteTestBase {
       std::vector<std::string> row_values{std::to_string(i_unique),
                                           std::to_string(i_1000),
                                           std::to_string(i_20),
-                                          std::to_string(d),
-                                          std::to_string(f),
+                                          convert(d),
+                                          convert(f),
                                           t,
                                           std::to_string(i_unique)};
       if (r > 0) {

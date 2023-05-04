@@ -98,7 +98,17 @@ T v(const TargetValue& r) {
 }
 
 template <typename T>
-inline std::string convert(const T& t) {
+typename std::enable_if<std::is_floating_point<T>::value, std::string>::type
+convert(const T& t) {
+  std::stringstream ss;
+  ss.imbue(std::locale::classic());
+  ss << t;
+  return ss.str();
+}
+
+template <typename T>
+inline typename std::enable_if<!std::is_floating_point<T>::value, std::string>::type
+convert(const T& t) {
   return std::to_string(t);
 }
 
